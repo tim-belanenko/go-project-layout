@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  migration:
+    image: ${MIGRATION_IMAGE}:${MIGRATION_TAG}
+
+  api:
+    image: ${API_IMAGE}:${API_TAG}
+    depends_on: [migration]

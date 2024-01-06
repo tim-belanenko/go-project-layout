@@ -1,0 +1,22 @@
+version: '3'
+
+env:
+  MIGRATION_IMAGE: migration
+  MIGRATION_TAG: tag
+
+  API_IMAGE: api
+  API_TAG: tag
+
+tasks:
+  docker-build:
+    cmds: 
+      - docker build -f docker/api.dockerfile -t ${API_IMAGE}:${API_TAG} . 
+      - docker build -f docker/migration.dockerfile -t ${MIGRATION_IMAGE}:${MIGRATION_TAG} . 
+
+  up-local:
+    cmds:
+      - docker-compose -f docker/docker-compose.yml up 
+
+  generate-swagger:
+    cmds: 
+      - go run github.com/swaggo/swag/cmd/swag@latest init -g internal/app/transport/api/api.go -o api
