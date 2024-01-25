@@ -19,4 +19,13 @@ tasks:
 
   generate-swagger:
     cmds: 
-      - go run github.com/swaggo/swag/cmd/swag@latest init -g internal/app/transport/api/api.go -o api
+      - go run github.com/swaggo/swag/cmd/swag@v1.16.2 init -g internal/app/transport/api/api.go -o api
+
+  generate-sqlc:
+    cmds:
+      - go run github.com/sqlc-dev/sqlc/cmd/sqlc@v1.25.0 generate -f internal/app/repository/postgres/sqlc.yml
+
+  generate:
+    cmds:
+      - task: generate-sqlc
+      - task: generate-swagger

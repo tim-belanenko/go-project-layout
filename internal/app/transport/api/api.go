@@ -25,7 +25,7 @@ type APIServer struct {
 	app *fiber.App
 }
 
-func New(cfg *config.HTTP) *APIServer {
+func New(cfg *config.HTTP, hc IHealthcheck) *APIServer {
 	app := fiber.New(
 		fiber.Config{
 			ErrorHandler: handlers.NewErrorHandler(),
@@ -34,7 +34,9 @@ func New(cfg *config.HTTP) *APIServer {
 	api.SwaggerInfo.Host = fmt.Sprintf("%s:%d", cfg.ListenHost, cfg.ListenPort)
 
 	middleware.RegisterMiddlewares(app)
-	handlers.RegisterHandlers(app)
+
+	r := NewRouter(hc)
+	r.RegisterHandlers(app)
 
 	return &APIServer{
 		app: app,
