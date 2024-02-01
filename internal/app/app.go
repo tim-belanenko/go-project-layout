@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"layout/internal/app/config"
+	"layout/cmd/api/config"
 	"layout/internal/app/repository/postgres"
 	"layout/internal/app/transport/api"
 	"layout/internal/app/usecase"

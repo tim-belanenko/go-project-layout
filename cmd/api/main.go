@@ -1,8 +1,8 @@
 package main
 
 import (
+	"layout/cmd/api/config"
 	"layout/internal/app"
-	"layout/internal/app/config"
 	"layout/internal/pkg/ctxlogger"
 	"layout/internal/pkg/validator"
 )

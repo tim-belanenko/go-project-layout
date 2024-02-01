@@ -1,7 +1,7 @@
 package main
 
 import (
-	"layout/internal/app/config"
+	"layout/cmd/migration/config"
 	"layout/internal/pkg/ctxlogger"
 	"layout/internal/pkg/migration"
 	"layout/internal/pkg/validator"

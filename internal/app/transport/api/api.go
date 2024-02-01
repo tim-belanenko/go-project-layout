@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 
 	"layout/api"
-	"layout/internal/app/config"
+	"layout/cmd/api/config"
 	"layout/internal/app/transport/api/handlers"
 	"layout/internal/app/transport/api/middleware"
 )
